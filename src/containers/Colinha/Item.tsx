@@ -8,8 +8,8 @@ type ItemProps = {
 
 export function Item({ data, cargo }: ItemProps) {
 
-  const formatText = ({ nomeUrna, numero, partido }: Candidato) => {
-    return `${nomeUrna} (${numero}) [${partido}]`;
+  const formatText = ({ nomeUrna, partido }: Candidato) => {
+    return `${nomeUrna} [${partido}]`;
   };
 
   return (
