@@ -11,9 +11,14 @@ import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 
 const GlobalStyle = createGlobalStyle`
-html, body, #root, #root>div {
-  height: 100%
-}
+  html, body, #root, #root>div {
+    min-height: 100%;
+    height: 100%;
+  }
+
+  #root {
+    background-color: ${(props) => props.theme.white};  
+  }
 `;
 
 function App() {

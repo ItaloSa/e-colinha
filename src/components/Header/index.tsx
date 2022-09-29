@@ -5,7 +5,7 @@ export function Header() {
     <TopContainer>
       <h1>e-Colinha</h1>
       <hr />
-      <p>
+      <p className="no_print">
         <b>É proibido usar celular na cabine no momento da votação! </b>
         <span>
           <a

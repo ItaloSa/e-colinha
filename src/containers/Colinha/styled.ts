@@ -34,3 +34,17 @@ export const Square = styled.div`
   font-size: 22px;
   font-weight: 600;
 `;
+
+export const DownloadContainer = styled.div`
+  color: ${(props) => props.theme.white};
+  button {
+    background: none;
+    color: ${(props) => props.theme.bgSec};
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    text-decoration: underline;
+  }
+`;

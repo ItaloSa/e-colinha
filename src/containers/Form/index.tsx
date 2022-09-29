@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import BeatLoader from "react-spinners/BeatLoader";
 
-import { FormContainer, SubmitBtn } from "./styled";
+import { FormContainer } from "./styled";
 import { UFs } from "../../services/data";
 import useApi from "../../services/data/hook";
+import { Button } from "../../components/Button";
 
 interface CandidateForm {
   uf: string;
@@ -157,7 +158,7 @@ export function Form() {
                 />
               </div>
               <div className="mt-3 d-grid gap-2">
-                <SubmitBtn type="submit" value="Continuar" />
+                <Button type="submit" value="Continuar" />
               </div>
             </>
           ) : null}
