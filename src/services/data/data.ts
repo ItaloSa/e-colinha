@@ -53,3 +53,11 @@ export type CandidatoData = {
   deputadosEstadual: Candidato[];
   presidentes: Candidato[];
 };
+
+export type CandidatoFilter = {
+  governador: Candidato;
+  senador: Candidato;
+  deputadoFederal: Candidato;
+  deputadoEstadual: Candidato;
+  presidente: Candidato;
+};

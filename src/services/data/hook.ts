@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDataContext } from "./context";
-import { Candidato, Cargos } from "./data";
+import { Candidato, CandidatoData, Cargos } from "./data";
 
 export default function useApi() {
   const [isLoading, setIsLoading] = useState(false);
@@ -38,11 +38,28 @@ export default function useApi() {
     return a;
   }
 
+  function findCandidato(numero: string, data: Candidato[]) {
+    return data.find((candidato) => candidato.numero.toString() === numero);
+  }
+
+  function candidatesFromNumbers(data: CandidatoData, numbers: string) {
+    const [governador, senador, deputadoFederal, deputadoEstadual, presidente] =
+      numbers.split("-");
+    return {
+      governador: findCandidato(governador, data.governadores),
+      senador: findCandidato(senador, data.senadores),
+      deputadoFederal: findCandidato(deputadoFederal, data.deputadosFederal),
+      deputadoEstadual: findCandidato(deputadoEstadual, data.deputadosEstadual),
+      presidente: findCandidato(presidente, data.presidentes),
+    };
+  }
+
   return {
     isLoading,
     setIsLoading,
     loadData,
     candidatos,
     dataToOption,
+    candidatesFromNumbers
   };
 }
