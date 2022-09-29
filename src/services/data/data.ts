@@ -55,9 +55,17 @@ export type CandidatoData = {
 };
 
 export type CandidatoFilter = {
-  governador: Candidato;
-  senador: Candidato;
-  deputadoFederal: Candidato;
-  deputadoEstadual: Candidato;
-  presidente: Candidato;
+  3: Candidato;
+  5: Candidato;
+  6: Candidato;
+  7: Candidato;
+  1: Candidato;
+};
+
+export const CargosNome = {
+  [Cargos.GOVERNADOR]: "GOVERNADORA OU GOVERNADOR",
+  [Cargos.SENADOR]: "SENADORA OU SENADOR",
+  [Cargos.DEPUDADO_FEDERAL]: "DEPUTADA OU DEPUTADO ESTADUAL OU DISTRITAL",
+  [Cargos.DEPUDADO_ESTADUAL]: "DEPUTADA OU DEPUTADO FEDERAL",
+  [Cargos.PRESIDENTE]: "PRESIDENTE DA REPÚBLICA",
 };

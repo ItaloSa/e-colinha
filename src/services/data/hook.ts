@@ -46,11 +46,17 @@ export default function useApi() {
     const [governador, senador, deputadoFederal, deputadoEstadual, presidente] =
       numbers.split("-");
     return {
-      governador: findCandidato(governador, data.governadores),
-      senador: findCandidato(senador, data.senadores),
-      deputadoFederal: findCandidato(deputadoFederal, data.deputadosFederal),
-      deputadoEstadual: findCandidato(deputadoEstadual, data.deputadosEstadual),
-      presidente: findCandidato(presidente, data.presidentes),
+      [Cargos.GOVERNADOR]: findCandidato(governador, data.governadores),
+      [Cargos.SENADOR]: findCandidato(senador, data.senadores),
+      [Cargos.DEPUDADO_FEDERAL]: findCandidato(
+        deputadoFederal,
+        data.deputadosFederal
+      ),
+      [Cargos.DEPUDADO_ESTADUAL]: findCandidato(
+        deputadoEstadual,
+        data.deputadosEstadual
+      ),
+      [Cargos.PRESIDENTE]: findCandidato(presidente, data.presidentes),
     };
   }
 
@@ -60,6 +66,6 @@ export default function useApi() {
     loadData,
     candidatos,
     dataToOption,
-    candidatesFromNumbers
+    candidatesFromNumbers,
   };
 }

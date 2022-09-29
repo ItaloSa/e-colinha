@@ -15,7 +15,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <DataProvider>
         <GlobalStyle />
-        <div className="container">
+        <div className="container mb-3">
           <div className="row">
             <div className="col">
               <TopContainer>

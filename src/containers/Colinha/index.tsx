@@ -1,65 +1,51 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import { Container, ListTitle, Square } from "./styled";
+import { Container } from "./styled";
 import useApi from "../../services/data/hook";
 import { CandidatoFilter } from "../../services/data";
+import { Cargos } from "../../services/data";
+import { Item } from "./Item";
 
 export function Colinha() {
   const { uf, candidatosNum } = useParams();
   const { loadData, candidatos, candidatesFromNumbers } = useApi();
   const [data, setData] = useState<CandidatoFilter>();
+  const cargos = [
+    Cargos.DEPUDADO_FEDERAL,
+    Cargos.DEPUDADO_ESTADUAL,
+    Cargos.SENADOR,
+    Cargos.GOVERNADOR,
+    Cargos.PRESIDENTE,
+  ];
 
   useEffect(() => {
     const load = async () => {
       loadData(uf as string);
     };
     load();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     const data = candidatesFromNumbers(candidatos, candidatosNum as string);
     setData(data as unknown as CandidatoFilter);
+    // eslint-disable-next-line
   }, [candidatos]);
-
-  console.log(data);
 
   return (
     <>
-      {data?.governador ? (
+      {data?.[1] ? (
         <Container>
           <div className="row">
             <div className="col">
-              <div className="mt-3">
-                <ListTitle>DEPUTADA OU DEPUTADO(A) FEDERAL</ListTitle>
-                <div className="d-flex">
-                  {data.deputadoFederal.numero.toString().split('').map(n => <Square className="col">{n}</Square> )}
-                </div>
-              </div>
-              <div className="mt-3">
-                <ListTitle>DEPUTADA OU DEPUTADO(A) ESTADUAL</ListTitle>
-                <div className="d-flex">
-                  {data.deputadoEstadual.numero.toString().split('').map(n => <Square className="col">{n}</Square> )}
-                </div>
-              </div>
-              <div className="mt-3">
-                <ListTitle>SENADOR(A)</ListTitle>
-                <div className="d-flex">
-                  {data.senador.numero.toString().split('').map(n => <Square className="col">{n}</Square> )}
-                </div>
-              </div>
-              <div className="mt-3">
-                <ListTitle>GOVERNADOR(A)</ListTitle>
-                <div className="d-flex">
-                  {data.governador.numero.toString().split('').map(n => <Square className="col">{n}</Square> )}
-                </div>
-              </div>
-              <div className="mt-3">
-                <ListTitle>PRESIDENTE(A)</ListTitle>
-                <div className="d-flex">
-                  {data.presidente.numero.toString().split('').map(n => <Square className="col">{n}</Square> )}
-                </div>
-              </div>
+              {cargos.map((cargo) => (
+                <Item
+                  key={data[cargo].numero}
+                  cargo={cargo as Cargos}
+                  data={data}
+                />
+              ))}
             </div>
           </div>
         </Container>

@@ -12,6 +12,11 @@ export const ListTitle = styled.p`
   margin: 25px 0 10px 0;
   font-size: 1.2rem;
   line-height: 1.2rem;
+  font-weight: 600;
+`;
+
+export const ListDetails = styled.p`
+  color: ${(props) => props.theme.white};
 `;
 
 export const Square = styled.div`
