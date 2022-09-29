@@ -19,6 +19,16 @@ const GlobalStyle = createGlobalStyle`
   #root {
     background-color: ${(props) => props.theme.white};  
   }
+
+  @media print {
+    * {
+      color: #000 !important;
+      font-size: 12px !important;
+    }
+    .no_print {
+      display: none;
+    }
+  }
 `;
 
 function App() {

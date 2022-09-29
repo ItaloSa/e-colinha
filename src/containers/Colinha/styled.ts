@@ -5,6 +5,20 @@ export const Container = styled.div`
   padding: 3rem 2rem 3rem 2rem;
   border-radius: 1rem 1rem 1rem 1rem;
   background-color: ${(props) => props.theme.bg};
+
+  @media print {
+    width: 400px;
+    display: block;
+    padding: 0 2rem 0 2rem;
+    border: 3px solid #000;
+    border-radius: 1rem 1rem 1rem 1rem;
+  }
+
+  @media screen {
+    .printable {
+      display: none;
+    }
+  }
 `;
 
 export const ListTitle = styled.p`
@@ -33,6 +47,10 @@ export const Square = styled.div`
   align-items: center;
   font-size: 22px;
   font-weight: 600;
+
+  @media print {
+    border: 1px solid #000;
+  }
 `;
 
 export const DownloadContainer = styled.div`
@@ -47,4 +65,9 @@ export const DownloadContainer = styled.div`
     outline: inherit;
     text-decoration: underline;
   }
+`;
+
+export const Printable = styled.div`
+  width: 300px;
+  border: 1px solid #1C6EA4;
 `;

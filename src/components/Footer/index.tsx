@@ -2,12 +2,12 @@ import { Container } from "./styled";
 
 export function Footer() {
   return (
-    <Container>
-      <p className="no_print">
+    <Container className="no_print">
+      <p>
         A Justiça Eleitoral NÃO solicita a digitação dos votos em nenhum meio
         que não seja a urna eletrônica.
       </p>
-      <hr className="no_print" />
+      <hr />
       <p>
         <small>
           Criado por{" "}

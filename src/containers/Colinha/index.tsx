@@ -1,7 +1,7 @@
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import BeatLoader from "react-spinners/BeatLoader";
-import domtoimage from "dom-to-image";
+// import domtoimage from "dom-to-image";
 
 import { Container, DownloadContainer } from "./styled";
 import useApi from "../../services/data/hook";
@@ -37,27 +37,11 @@ export function Colinha() {
     // eslint-disable-next-line
   }, [candidatos]);
 
-  const handleImage = () => {
-    const filtering = (node: Node) => {
-      return !(node as HTMLElement).classList?.contains("no_print");
-    };
-    domtoimage
-      .toJpeg(document.getElementById("root") as Node, {
-        quality: 0.95,
-        filter: filtering,
-      })
-      .then(function (dataUrl) {
-        var link = document.createElement("a");
-        link.download = "colinha.jpeg";
-        link.href = dataUrl;
-        link.click();
-      });
-  };
-
   return (
     <div className="container">
       <Container>
         <>
+          <h1 className="mt-3 printable">e-Colinha.ml</h1>
           {data?.[1] ? (
             <>
               {cargos.map((cargo) => (
@@ -81,7 +65,7 @@ export function Colinha() {
             <button
               className="no_print"
               onClick={() => {
-                handleImage();
+                window.print();
               }}
             >
               aqui

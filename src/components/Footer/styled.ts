@@ -6,7 +6,9 @@ export const Container = styled.div`
   border-radius: 1rem 1rem 0 0;
   background-color: ${(props) => props.theme.bg};
 
-  p, a, small {
-    color: ${(props) => props.theme.white}; 
+  p,
+  a,
+  small {
+    color: ${(props) => props.theme.white};
   }
 `;
