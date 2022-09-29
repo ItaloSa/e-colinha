@@ -17,6 +17,7 @@ export default function useApi() {
   }
 
   async function loadData(uf: string) {
+    setIsLoading(true);
     const pres = await loadCand("BR");
     const estado = await loadCand(uf);
 
@@ -28,18 +29,33 @@ export default function useApi() {
       presidentes: filterCargo(pres, Cargos.PRESIDENTE),
     };
     setData(data);
+    setIsLoading(false);
   }
 
   function dataToOption(candidatos: Candidato[]) {
-    const a = candidatos.map(({ nomeUrna, numero, partido, id }) => ({
-      label: `${nomeUrna} (${numero}) [${partido}]`,
-      value: `${numero}`,
-    }));
-    return a;
+    const candidatosOptions = candidatos.map(
+      ({ nomeUrna, numero, partido, id }) => ({
+        label: `${nomeUrna} (${numero}) [${partido}]`,
+        value: `${numero}`,
+      })
+    );
+    return [{ label: "BRANCO OU NULO", value: "NULO" }, ...candidatosOptions];
   }
 
   function findCandidato(numero: string, data: Candidato[]) {
-    return data.find((candidato) => candidato.numero.toString() === numero);
+    let found = data.find(
+      (candidato) => candidato.numero.toString() === numero
+    );
+    if (!found) {
+      found = {
+        ...data[0],
+        id: 0,
+        nomeUrna: "BRANCO OU NULO",
+        partido: "-",
+        numero: new Array(`${data[0].numero}`.length).fill('0').toString().replaceAll(',', ''),
+      };
+    }
+    return found;
   }
 
   function candidatesFromNumbers(data: CandidatoData, numbers: string) {

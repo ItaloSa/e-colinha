@@ -40,7 +40,7 @@ export interface Candidato {
   cdCargo: number;
   cargo: string;
   id: number;
-  numero: number;
+  numero: string;
   nomeUrna: string;
   situacao: string;
   partido: string;

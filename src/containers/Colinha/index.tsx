@@ -28,8 +28,10 @@ export function Colinha() {
   }, []);
 
   useEffect(() => {
-    const data = candidatesFromNumbers(candidatos, candidatosNum as string);
-    setData(data as unknown as CandidatoFilter);
+    if (candidatos.senadores.length) {
+      const data = candidatesFromNumbers(candidatos, candidatosNum as string);
+      setData(data as unknown as CandidatoFilter);
+    }
     // eslint-disable-next-line
   }, [candidatos]);
 
@@ -41,7 +43,7 @@ export function Colinha() {
             <div className="col">
               {cargos.map((cargo) => (
                 <Item
-                  key={data[cargo].numero}
+                  key={data[cargo].cdCargo}
                   cargo={cargo as Cargos}
                   data={data}
                 />
