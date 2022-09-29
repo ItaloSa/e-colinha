@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import BeatLoader from "react-spinners/BeatLoader";
 
 import { Container } from "./styled";
 import useApi from "../../services/data/hook";
@@ -36,11 +37,11 @@ export function Colinha() {
   }, [candidatos]);
 
   return (
-    <>
-      {data?.[1] ? (
-        <Container>
-          <div className="row">
-            <div className="col">
+    <div className="container">
+      <Container>
+        <>
+          {data?.[1] ? (
+            <>
               {cargos.map((cargo) => (
                 <Item
                   key={data[cargo].cdCargo}
@@ -48,10 +49,14 @@ export function Colinha() {
                   data={data}
                 />
               ))}
+            </>
+          ) : (
+            <div className="d-flex justify-content-center">
+              <BeatLoader color="#f7a706" />
             </div>
-          </div>
-        </Container>
-      ) : null}
-    </>
+          )}
+        </>
+      </Container>
+    </div>
   );
 }
