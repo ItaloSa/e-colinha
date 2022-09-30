@@ -19,6 +19,14 @@ export function Footer() {
             >
               ItaloSa
             </a>
+            {". "}Este projeto é open-source, contribua - {" "}
+          <a
+              href="https://github.com/ItaloSa/e-colinha"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>.
           </small>
         </p>
       </div>
