@@ -52,7 +52,10 @@ export default function useApi() {
         id: 0,
         nomeUrna: "BRANCO OU NULO",
         partido: "-",
-        numero: new Array(`${data[0].numero}`.length).fill('0').toString().replaceAll(',', ''),
+        numero: new Array(`${data[0].numero}`.length)
+          .fill("0")
+          .toString()
+          .replaceAll(",", ""),
       };
     }
     return found;
@@ -76,6 +79,14 @@ export default function useApi() {
     };
   }
 
+  function getColinha() {
+    return window.localStorage.getItem("colinha");
+  }
+
+  function saveColinha() {
+    window.localStorage.setItem("colinha", window.location.href);
+  }
+
   return {
     isLoading,
     setIsLoading,
@@ -83,5 +94,7 @@ export default function useApi() {
     candidatos,
     dataToOption,
     candidatesFromNumbers,
+    getColinha,
+    saveColinha,
   };
 }

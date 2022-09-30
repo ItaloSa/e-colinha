@@ -63,17 +63,6 @@ export function Colinha() {
         <DownloadContainer className="no_print mb-3">
           <hr />
           <p>
-            Imprima a e-colinha{" "}
-            <button
-              className="no_print"
-              onClick={() => {
-                window.print();
-              }}
-            >
-              aqui
-            </button>
-          </p>
-          <p>
             <Link to="/">Clique aqui</Link>
             {" "}para criar uma nova colinha.
           </p>

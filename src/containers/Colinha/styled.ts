@@ -88,9 +88,12 @@ export const ShareContainer = styled.div`
   }
 
   .icon-link {
+    display: flex;
     padding: 1rem;
     border-radius: 0.5rem;
     background-color: white;
+    align-items: center;
+    justify-content: space-around;
   }
 
   a {

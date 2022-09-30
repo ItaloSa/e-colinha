@@ -1,6 +1,8 @@
-import { BsWhatsapp, BsTwitter } from "react-icons/bs";
+import { BsWhatsapp, BsTwitter, BsSave, BsPrinter } from "react-icons/bs";
+
 import { CandidatoFilter, Cargos } from "../../services/data";
 import { ShareContainer } from "./styled";
+import useApi from "../../services/data/hook";
 
 type ShareProps = {
   candidatos: CandidatoFilter;
@@ -8,6 +10,7 @@ type ShareProps = {
 
 export function Share({ candidatos }: ShareProps) {
   const url = window.location.href;
+  const { saveColinha } = useApi();
 
   const sharebleText = () => {
     const header = "#eColinha #Eleicoes2022 #Eleicoes22\n\n";
@@ -49,6 +52,22 @@ export function Share({ candidatos }: ShareProps) {
             >
               <BsTwitter color="#000" size={20} /> Twitter
             </a>
+            <button
+              className="icon-link"
+              onClick={() => {
+                saveColinha();
+              }}
+            >
+              <BsSave color="#000" size={20} /> Salvar
+            </button>
+            <button
+              className="icon-link"
+              onClick={() => {
+                window.print();
+              }}
+            >
+              <BsPrinter color="#000" size={20} /> Imprimir
+            </button>
           </div>
         </div>
       </div>
