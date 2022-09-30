@@ -7,7 +7,7 @@ import BeatLoader from "react-spinners/BeatLoader";
 import { FormContainer } from "./styled";
 import { UFs } from "../../services/data";
 import useApi from "../../services/data/hook";
-import { Button } from "../../components/Button";
+import { Input } from "../../components/Button";
 
 interface CandidateForm {
   uf: string;
@@ -158,7 +158,7 @@ export function Form() {
                 />
               </div>
               <div className="mt-3 d-grid gap-2">
-                <Button type="submit" value="Continuar" />
+                <Input type="submit" value="Continuar" />
               </div>
             </>
           ) : null}

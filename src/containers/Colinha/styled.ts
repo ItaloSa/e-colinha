@@ -65,9 +65,36 @@ export const DownloadContainer = styled.div`
     outline: inherit;
     text-decoration: underline;
   }
+  a {
+    color: ${(props) => props.theme.bgSec};
+  }
 `;
 
 export const Printable = styled.div`
   width: 300px;
-  border: 1px solid #1C6EA4;
+  border: 1px solid #1c6ea4;
+`;
+
+export const ShareContainer = styled.div`
+  p {
+    color: ${(props) => props.theme.yellow};
+    font-weight: 600;
+  }
+
+  .share-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px 6px;
+  }
+
+  .icon-link {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: white;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
 `;

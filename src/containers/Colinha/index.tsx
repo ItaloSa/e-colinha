@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import BeatLoader from "react-spinners/BeatLoader";
 // import domtoimage from "dom-to-image";
 
@@ -8,11 +8,13 @@ import useApi from "../../services/data/hook";
 import { CandidatoFilter } from "../../services/data";
 import { Cargos } from "../../services/data";
 import { Item } from "./Item";
+import { Share } from "./Share";
 
 export function Colinha() {
   const { uf, candidatosNum } = useParams();
   const { loadData, candidatos, candidatesFromNumbers } = useApi();
   const [data, setData] = useState<CandidatoFilter>();
+
   const cargos = [
     Cargos.DEPUDADO_FEDERAL,
     Cargos.DEPUDADO_ESTADUAL,
@@ -61,7 +63,7 @@ export function Colinha() {
         <DownloadContainer className="no_print mb-3">
           <hr />
           <p>
-            Imprima sua e-colinha:{" "}
+            Imprima a e-colinha{" "}
             <button
               className="no_print"
               onClick={() => {
@@ -71,7 +73,14 @@ export function Colinha() {
               aqui
             </button>
           </p>
+          <p>
+            <Link to="/">Clique aqui</Link>
+            {" "}para criar uma nova colinha.
+          </p>
         </DownloadContainer>
+        <div className="row no_print mt-4">
+          {data && <Share candidatos={data} />}
+        </div>
       </Container>
     </div>
   );
