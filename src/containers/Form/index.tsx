@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import BeatLoader from "react-spinners/BeatLoader";
 
-import { FormContainer } from "./styled";
+import { FormContainer, Link } from "./styled";
 import { UFs } from "../../services/data";
 import useApi from "../../services/data/hook";
 import { Input } from "../../components/Button";
@@ -21,8 +21,10 @@ interface CandidateForm {
 export function Form() {
   const { handleSubmit, control, setValue } = useForm<CandidateForm>();
   const [showForm, setShowForm] = useState(false);
-  const { loadData, candidatos, dataToOption, isLoading } = useApi();
+  const { loadData, candidatos, dataToOption, isLoading, getColinha } =
+    useApi();
   const navigate = useNavigate();
+  const colinha = getColinha();
 
   const handleOnSubmit = (data: CandidateForm) => {
     const {
@@ -62,6 +64,12 @@ export function Form() {
           {isLoading && (
             <div className="d-flex justify-content-center mt-4">
               <BeatLoader color="#f7a706" />
+            </div>
+          )}
+
+          {colinha && !showForm && (
+            <div className="d-grid gap-2">
+              <Link href={colinha}> Acessar colinha salva</Link>
             </div>
           )}
 
