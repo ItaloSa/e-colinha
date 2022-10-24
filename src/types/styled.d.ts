@@ -1,7 +1,7 @@
 // styled.d.ts
 import "styled-components";
 
-import { theme } from "../theme";
+import { theme } from "../styles/themes/default";
 
 type ThemeInterface = typeof theme;
 
